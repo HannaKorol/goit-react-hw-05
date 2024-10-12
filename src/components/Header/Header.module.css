@@ -15,5 +15,9 @@
 
 .activeLink {
     color:black;
-    
+}
+
+.wrapperLinks{
+    display: flex;
+    gap: 20px;
 }
