@@ -12,8 +12,6 @@ const buildLinkClass = ({ isActive }) => {
 const Navigation = () => {
   return (
     <div className={s.wrapper}>
-      {/*       <div>Rouling</div>
-       */}
       <nav className={s.wrapperLinks}>
         <NavLink className={buildLinkClass} to="/">
           Home
