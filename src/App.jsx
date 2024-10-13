@@ -5,7 +5,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
-import Navigation from "./components/Header/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 
 const App = () => {
   return (
