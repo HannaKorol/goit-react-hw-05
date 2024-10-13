@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams(); // отримуємо movieId з URL
@@ -35,10 +35,10 @@ const MovieDetailsPage = () => {
   }, [movieId]);
     
       if (!movie) {
-        return <div>Loading...</div>; // Render loading state if movie data is not yet available
+        return <div>Loading...</div>; // Відображати стан завантаження, якщо дані фільму ще не доступні
       }
 
-    const genreList = movie.genres ? movie.genres.map((genre) => genre.name).join(",") : "";
+    const genreList = movie.genres ? movie.genres.map((genre) => genre.name).join(",") : ""; // так як жанри фільму розміщенні в array, треба відмапувати його і повернути данри якщо вони там є
     
 
 
@@ -52,7 +52,13 @@ const MovieDetailsPage = () => {
       <p>Genres: {genreList}</p>
       <p>Country: {movie.origin_country}</p>
       <p>Runtime: {movie.runtime}</p>
-      <p></p>
+      <hr />
+      <div>
+        <h3>Additional information</h3>
+        <NavLink to="cast">Cast</NavLink>
+        <NavLink to="reviews">Reviews</NavLink>
+          </div>
+          <Outlet/>
     </div>
   );
 };
