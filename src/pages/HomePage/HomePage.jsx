@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import MovieList from '../../components/MovieList/MovieList';
 
 const HomePage = () => {

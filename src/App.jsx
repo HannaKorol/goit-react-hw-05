@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+          {/* movieId дозаоляє нам використовувати useParams() в компонентах для повернення динамічних параметрів, щрб використовувати для запиту на сервер */}
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const MovieReviews = () => {
   const { movieId } = useParams(); // отримуємо movieId з URL
@@ -34,11 +34,9 @@ const MovieReviews = () => {
     }
   }, [movieId]);
 
-  if (!reviews || reviews.length === 0) {
-    return <div>Loading...</div>; // Відображати стан завантаження, якщо дані фільму ще не доступні
+  if (!reviews.length) {
+    return <div>No review is provided.</div>;
   }
-
-  // Construct the full image URL
 
   return (
     <div>
@@ -53,6 +51,6 @@ const MovieReviews = () => {
       </ul>
     </div>
   );
-}
+};
 
-export default MovieReviews
+export default MovieReviews;
