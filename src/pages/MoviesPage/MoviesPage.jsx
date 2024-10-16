@@ -1,4 +1,5 @@
 import MovieList from "../../components/MovieList/MovieList";
+import MovieSearchBar from "../../components/MovieSearchBar/MovieSearchBar";
 
 const MoviesPage = () => {
 
@@ -6,7 +7,11 @@ const MoviesPage = () => {
 
 
 
-  return <div><MovieList/></div>;
+
+  return  <div>
+    <MovieSearchBar/>
+    <MovieList />
+  </div>;
 }
 
 export default MoviesPage;
