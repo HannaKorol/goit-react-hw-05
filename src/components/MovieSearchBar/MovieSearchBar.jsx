@@ -1,14 +1,16 @@
 import { Field, Form, Formik } from "formik";
 
-const MovieSearchBar = () => {
+const MovieSearchBar = (handleChangeQuery) => {
   const initialValues = {
     query: "",
   };
 
-    const handleSubmit = value => {
-        console.log(values);
-/*     setSearchParams({ query: value });
- */  };
+  const handleSubmit = (values) => {
+      console.log(values);
+      handleChangeQuery(values.query);
+    /*     setSearchParams({ query: value });
+     */
+  };
 
   return (
     <div>
