@@ -1,13 +1,14 @@
+import React from "react";
 import { Field, Form, Formik } from "formik";
 
-const MovieSearchBar = (handleChangeQuery) => {
+const MovieSearchBar = ({ handleChangeQuery }) => {
   const initialValues = {
     query: "",
   };
 
   const handleSubmit = (values) => {
-      console.log(values);
-      handleChangeQuery(values.query);
+    console.log(values);
+    handleChangeQuery(values.query);
     /*     setSearchParams({ query: value });
      */
   };
@@ -17,7 +18,7 @@ const MovieSearchBar = (handleChangeQuery) => {
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <Field name="query" />
-          <button>Search</button>
+          <button type="submit">Search</button>
         </Form>
       </Formik>
     </div>
