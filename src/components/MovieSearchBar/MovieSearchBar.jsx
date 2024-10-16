@@ -8,10 +8,12 @@ const MovieSearchBar = ({ handleChangeQuery }) => {
 
   const handleSubmit = (values) => {
     console.log(values);
-    handleChangeQuery(values.query);
+    handleChangeQuery(values.query);             //receive objects
     /*     setSearchParams({ query: value });
      */
-  };
+    };
+    
+    
 
   return (
     <div>

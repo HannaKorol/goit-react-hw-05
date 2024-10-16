@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const MovieList = ({ movies }) => {
  if (!movies || movies.length === 0) {
    return <p>No movies available</p>; // Додаємо перевірку на випадок відсутності фільмів
- }
+    }
+    
+    
 
   return (
     <div>
