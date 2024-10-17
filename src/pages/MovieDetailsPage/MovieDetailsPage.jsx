@@ -40,14 +40,16 @@ const MovieDetailsPage = () => {
 
   const genreList = movie.genres
     ? movie.genres.map((genre) => genre.name).join(",")
-    : ""; // так як жанри фільму розміщенні в array, треба відмапувати його і повернути данри якщо вони там є
+    : ""; // так як жанри фільму розміщенні в array, треба відмапувати його і повернути жанри якщо вони там є
 
   // Construct the full image URL
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   return (
     <div>
-      <img src={posterUrl} />
+      <img src={movie.poster_path ? posterUrl : defaultImg} />
       <h2>{movie.title}</h2>
       <p>User Score: {movie.vote_average}</p>
       <p>Overview:{movie.overview}</p>

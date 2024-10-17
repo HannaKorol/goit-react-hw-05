@@ -8,7 +8,8 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]); // State for storing movie data
 
   // Get the search query from URL parameters
-  const query = searchParams.get("query") || "";
+  const query =
+    searchParams.get("query") || ""; /* searchParams може мати get чи set-закидує обект 35.00 lection 2 */
 
   const options = {
     method: "GET",
