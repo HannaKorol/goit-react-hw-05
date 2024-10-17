@@ -6,10 +6,12 @@ import MovieSearchBar from "../../components/MovieSearchBar/MovieSearchBar";
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams(); // Initialize searchParams
   const [movies, setMovies] = useState([]); // State for storing movie data
+  const [loading, setLoading] = useState(false);
 
   // Get the search query from URL parameters
   const query =
-    searchParams.get("query") || ""; /* searchParams може мати get чи set-закидує обект 35.00 lection 2 */
+    searchParams.get("query") ||
+    ""; /* searchParams може мати get - отримує обект чи set-закидує обект до URL безпосередньо -  35.00 lection 2 */
 
   const options = {
     method: "GET",
@@ -21,6 +23,7 @@ const MoviesPage = () => {
   };
 
   const fetchMovies = async (searchQuery) => {
+    setLoading(true); // Встановлюємо loading в true на початку
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
@@ -33,16 +36,18 @@ const MoviesPage = () => {
       setMovies(data.results); // Update the movies state with the results
     } catch (error) {
       console.error("Error fetching movies:", error);
+    } finally {
+      setLoading(false); // Завжди встановлюємо loading в false наприкінці
     }
   };
 
-  useEffect(() => {
-    if (query) {
-      fetchMovies(query); // Fetch movies based on query from URL
-    } else {
-      setMovies([]); // Clear movies if no query
-    }
-  }, [query]); // Effect runs when query changes
+ useEffect(() => {
+   if (query) {
+     fetchMovies(query); // Завантажуємо фільми
+   } else {
+     setMovies([]); // Очищуємо фільми, якщо запит пустий
+   }
+ }, [query]);
 
   const handleChangeQuery = (newQuery) => {
     if (newQuery) {
@@ -64,7 +69,19 @@ const MoviesPage = () => {
   return (
     <div>
       <MovieSearchBar handleChangeQuery={handleChangeQuery} />
-      <MovieList movies={filteredData} />
+      {loading ? ( // Відображаємо лоадер, якщо loading true
+        <p>Loading...</p> // Текст лоадера
+      ) : (
+      query ? ( // Якщо є запит
+        filteredData.length > 0 ? ( // Якщо є фільми в filteredData
+          <MovieList movies={filteredData} />
+        ) : ( // Якщо фільмів немає
+          <p>No movies available</p> // Повідомлення про відсутність фільмів
+        )
+      ) : ( // Якщо запиту немає
+        <p>Please enter a movie title to search.</p> // Повідомлення про необхідність вводу
+      )
+      )}
     </div>
   );
 };

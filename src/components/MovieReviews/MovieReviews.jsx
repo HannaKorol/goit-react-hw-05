@@ -35,7 +35,7 @@ const MovieReviews = () => {
   }, [movieId]);
 
   if (!reviews.length) {
-    return <div>No review is provided.</div>;
+    return <div>No reviews are provided.</div>;
   }
 
   return (

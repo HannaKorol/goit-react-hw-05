@@ -34,9 +34,13 @@ const MovieCast = () => {
     }
   }, [movieId]);
 
-  if (!actors && setActors.length === 0) {
-    return <div>Loading...</div>; // Відображати стан завантаження, якщо дані фільму ще не доступні
-  }
+if (!actors) {
+  return <div>Loading...</div>; // Відображати стан завантаження, якщо дані акторів ще не доступні
+}
+
+if (actors.length === 0) {
+  return <div>Actors are not listed.</div>; // Якщо акторів немає
+}
 
   const defaultImg = "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
@@ -46,7 +50,6 @@ const MovieCast = () => {
         {actors.map((actor) => (
           <li key={actor.cast_id}>
             <p>{actor.name}</p>
-            
             <img
               src={actor.profile_path ? `https://image.tmdb.org/t/p/w185${actor.profile_path}` : defaultImg}
                 alt={actor.name}

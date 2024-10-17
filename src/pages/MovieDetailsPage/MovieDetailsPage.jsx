@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
         options
       );
       const movieData = await response.json();
-      console.log(movieData);
+      /*       console.log(movieData); */
       setMovie(movieData);
     } catch (error) {
       console.error("Error fetching the movie details:", error);
