@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
-  const { movieId } = useParams(); // отримуємо movieId з URL
-  const [movie, setMovie] = useState(null); //ініціалізуєсмо як null //Початковий стан для movie має бути об'єктом (а не масивом), оскільки отриму деталі одного фільму.
+    const { movieId } = useParams(); // отримуємо movieId з URL
+    const location = useLocation();
+    console.log(location);
+    const goBackRef = useRef(location.state ?? "/");
+    const [movie, setMovie] = useState(null); //ініціалізуєсмо як null //Початковий стан для movie має бути об'єктом (а не масивом), оскільки отриму деталі одного фільму.
 
   const options = {
     method: "GET",
@@ -49,6 +52,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
+      <Link to={goBackRef.current}>Go back</Link>
       <img src={movie.poster_path ? posterUrl : defaultImg} />
       <h2>{movie.title}</h2>
       <p>User Score: {movie.vote_average}</p>

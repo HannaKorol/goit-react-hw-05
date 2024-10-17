@@ -39,7 +39,7 @@ if (!actors) {
 }
 
 if (actors.length === 0) {
-  return <div>Actors are not listed.</div>; // Якщо акторів немає
+  return <div>No actors are listed.</div>; // Якщо акторів немає
 }
 
   const defaultImg = "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
