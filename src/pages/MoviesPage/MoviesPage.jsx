@@ -41,23 +41,23 @@ const MoviesPage = () => {
     }
   };
 
- useEffect(() => {
-   if (query) {
-     fetchMovies(query); // Завантажуємо фільми
-   } else {
-     setMovies([]); // Очищуємо фільми, якщо запит пустий
-   }
- }, [query]);
+  useEffect(() => {
+    if (query) {
+      fetchMovies(query); // Завантажуємо фільми
+    } else {
+      setMovies([]); // Очищуємо фільми, якщо запит пустий
+    }
+  }, [query]);
 
   const handleChangeQuery = (newQuery) => {
     if (newQuery) {
-      setSearchParams({ query: newQuery }); // Update URL with new query
+      setSearchParams({ query: newQuery }); // запдейтуємо URL з newquery
     } else {
-      setSearchParams({}); // Clear query from URL if empty
+      setSearchParams({}); // Якщо URL пустий, очищаємо query
     }
   };
 
-  // You can filter the data here if needed
+  // Зфільтруємо данні за допомогою useMemo *лекція 2
   const filteredData = useMemo(
     () =>
       movies.filter((movie) =>
@@ -71,16 +71,16 @@ const MoviesPage = () => {
       <MovieSearchBar handleChangeQuery={handleChangeQuery} />
       {loading ? ( // Відображаємо лоадер, якщо loading true
         <p>Loading...</p> // Текст лоадера
-      ) : (
-      query ? ( // Якщо є запит
+      ) : query ? ( // Якщо є запит
         filteredData.length > 0 ? ( // Якщо є фільми в filteredData
           <MovieList movies={filteredData} />
-        ) : ( // Якщо фільмів немає
+        ) : (
+          // Якщо фільмів немає
           <p>No movies available</p> // Повідомлення про відсутність фільмів
         )
-      ) : ( // Якщо запиту немає
+      ) : (
+        // Якщо запиту немає
         <p>Please enter a movie title to search.</p> // Повідомлення про необхідність вводу
-      )
       )}
     </div>
   );
