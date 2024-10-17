@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
@@ -67,7 +67,9 @@ const MovieDetailsPage = () => {
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
       </div>
-      <Outlet />
+      <Suspense fallback={<h2>Second suspense</h2>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
