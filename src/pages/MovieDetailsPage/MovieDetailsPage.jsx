@@ -90,11 +90,12 @@ const MovieDetailsPage = () => {
         </div>
       </div>
       <hr />
-      <div>
+      <div className={s.additionalInfo}>
         <h3>Additional information</h3>
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
       </div>
+      <hr />
       <Suspense fallback={<h2>Second suspense</h2>}>
         <Outlet />
       </Suspense>

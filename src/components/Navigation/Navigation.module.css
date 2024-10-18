@@ -3,13 +3,14 @@
     justify-content: space-between;
     padding: 20px;
     font-weight: 700;
-    background-color: lavender;
+    background-color: white;
     min-width: 1158px;
    margin: 0 auto;
+   border-bottom: 1px solid gray;
 }
 
 .link {
-    color: white;
+    color: rgb(229, 17, 17);
     font-weight: bold;
 }
 

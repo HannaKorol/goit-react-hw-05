@@ -1,14 +1,40 @@
 .movieDetails {
-  display: flex; /* Використання flexbox для вирівнювання */
+  display: flex; 
   line-height: 36px;
 }
 
 .moviePoster {
-  width: 350px; /* Ширина зображення */
+  width: 350px; 
   height: auto; /* Автоматичне збереження пропорцій */
-  margin: 10px; /* Відступ праворуч */
+  margin: 10px; 
 }
 
 .movieInfo {
   flex: 1; /* Текстовий блок займатиме залишок простору */
 }
+
+.additionalInfo {
+  margin-top: 10px; 
+  padding: 10px; 
+  border-radius: 5px; /* Закруглені краї */
+}
+
+.additionalInfo h3 {
+  color: #333; 
+  font-size: 1.5rem;
+}
+
+.additionalInfo a {
+    font-size: 20px;
+  display: inline-block; /* Виставити як блочний елемент */
+  margin-right: 10px; /* Відступ між посиланнями */
+  text-decoration: none; /* Без підкреслення */
+  color: #ff1e00; /* Колір тексту для посилання */
+  transition: color 0.3s; /* Анімація зміни кольору */
+  margin-left: 10px;
+}
+
+.additionalInfo a:hover {
+  color: #0056b3; /* Колір при наведенні */
+}
+

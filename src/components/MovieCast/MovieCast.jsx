@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import s from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const { movieId } = useParams(); // отримуємо movieId з URL
@@ -46,17 +47,25 @@ if (actors.length === 0) {
 
   return (
     <div>
-      <ul>
-        {actors.map((actor) => ( //мепимо авторів що отримали та формулюємо список
-          <li key={actor.cast_id}>
-            <p>{actor.name}</p>
-            <img
-              src={actor.profile_path ? `https://image.tmdb.org/t/p/w185${actor.profile_path}` : defaultImg}
+      <ul className={s.container}>
+        {actors.map(
+          (
+            actor //мепимо авторів що отримали та формулюємо список
+          ) => (
+            <li key={actor.cast_id}>
+              <p>{actor.name}</p>
+              <img
+                src={
+                  actor.profile_path
+                    ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+                    : defaultImg
+                }
                 alt={actor.name}
                 width={250}
               />
-          </li>
-        ))}
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
