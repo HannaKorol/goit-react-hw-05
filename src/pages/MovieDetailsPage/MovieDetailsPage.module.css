@@ -35,12 +35,12 @@
   display: inline-block; /* Виставити як блочний елемент */
   margin-right: 10px; /* Відступ між посиланнями */
   text-decoration: none; /* Без підкреслення */
-  color: #ff1e00; /* Колір тексту для посилання */
+  color:#747bff; /* Колір тексту для посилання */
   transition: color 0.3s; /* Анімація зміни кольору */
   margin-left: 10px;
 }
 
 .additionalInfo a:hover {
-  color: #0056b3; /* Колір при наведенні */
+  color: black; /* Колір при наведенні */
 }
 
