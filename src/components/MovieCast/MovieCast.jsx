@@ -4,6 +4,7 @@ import s from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const { movieId } = useParams(); // отримуємо movieId з URL
+  const [loading, setLoading] = useState(true); // Додано стан для завантаження
   const [actors, setActors] = useState([]); //ініціалізуємо як null //Початковий стан для movie має бути масивом (а не обєктом), оскільки отриму список акторів фільму.
 
   const options = {
@@ -26,7 +27,9 @@ const MovieCast = () => {
       setActors(movieActors.cast);
     } catch (error) {
       console.error("Error fetching the movie actors:", error);
-    }
+    }  finally {
+        setLoading(false); // Завантаження завершено
+      }
   };
 
   useEffect(() => {
@@ -35,15 +38,16 @@ const MovieCast = () => {
     }
   }, [movieId]);
 
-if (!actors) {
-  return <div>Loading...</div>; // Відображати стан завантаження, якщо дані акторів ще не доступні
-}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-if (actors.length === 0) {
-  return <div>No actors are listed.</div>; // Якщо акторів немає
-}
+  if (actors.length === 0) {
+    return <div>No actors are listed.</div>; // Якщо акторів немає
+  }
 
-  const defaultImg = "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster"; //дефолтне зображення від ментора з слаку
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster"; //дефолтне зображення від ментора з слаку
 
   return (
     <div>
