@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom"; // Import useSearchParams
 import MovieList from "../../components/MovieList/MovieList";
 import MovieSearchBar from "../../components/MovieSearchBar/MovieSearchBar";
+import s from "./MoviesPage.module.css"
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams(); // Initialize searchParams
@@ -70,17 +71,17 @@ const MoviesPage = () => {
     <div>
       <MovieSearchBar handleChangeQuery={handleChangeQuery} />
       {loading ? ( // Відображаємо лоадер, якщо loading true
-        <p>Loading...</p> // Текст лоадера
+        <p className={s.paragraph}>Loading...</p> // Текст лоадера
       ) : query ? ( // Якщо є запит
         filteredData.length > 0 ? ( // Якщо є фільми в filteredData
           <MovieList movies={filteredData} />
         ) : (
           // Якщо фільмів немає
-          <p>No movies available</p> // Повідомлення про відсутність фільмів
+          <p className={s.paragraph}>No movies available</p> // Повідомлення про відсутність фільмів
         )
       ) : (
         // Якщо запиту немає
-        <p>Please enter a movie title to search.</p> // Повідомлення про необхідність вводу
+        <p className={s.paragraph}>Please enter a movie title to search.</p> // Повідомлення про необхідність вводу
       )}
     </div>
   );

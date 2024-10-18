@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import MovieList from '../../components/MovieList/MovieList';
+import s from "./HomePage.module.css"
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]); /* State для збереження данних */
@@ -33,7 +34,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h2>Tranding today</h2>
+      <h2 className={s.paragraph}>Tranding today</h2>
       <MovieList movies={movies} />
       {/* Передаємо фільми(данні) в компонент MovieList для відобраденням їх списком на сторінці */}
     </div>

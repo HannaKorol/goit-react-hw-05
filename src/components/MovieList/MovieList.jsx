@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import s from "./MovieList.module.css"
 
 const MovieList = ({ movies }) => {
     const location = useLocation();
@@ -14,11 +15,12 @@ const MovieList = ({ movies }) => {
           <li key={movie.id}>
             <Link
               to={{
-                pathname:`/movies/${movie.id}`,
-                state: {location}, // Передаємо URL, звідки перейшли
+                pathname: `/movies/${movie.id}`,
+                state: { location }, // Передаємо URL, звідки перейшли
               }}
             >
-              <p>{movie.title}</p> {/* Показати назву фільму */}
+              <p className={s.paragraph}>{movie.title}</p>
+              {/* Показати назву фільму */}
             </Link>
           </li>
         ))}

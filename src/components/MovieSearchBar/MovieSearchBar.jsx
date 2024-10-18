@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, Form, Formik } from "formik";
+import s from "./MovieSearchBar.module.css"; 
 
 const MovieSearchBar = ({ handleChangeQuery }) => {
   const initialValues = {
@@ -16,7 +17,7 @@ const MovieSearchBar = ({ handleChangeQuery }) => {
     
 
   return (
-    <div>
+    <div className={s.container}>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <Field name="query" />

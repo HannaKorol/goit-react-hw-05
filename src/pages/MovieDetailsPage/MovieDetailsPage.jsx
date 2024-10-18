@@ -59,7 +59,9 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Link to={goBackRef.current}>Go back</Link>
+      <Link to={goBackRef.current} className={s.paragraph}>
+        Go back
+      </Link>
       <div className={s.movieDetails}>
         <img
           src={movie.poster_path ? posterUrl : defaultImg}
