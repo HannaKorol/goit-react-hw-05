@@ -4,8 +4,8 @@
     padding: 20px;
     font-weight: 700;
     background-color: lavender;
-    width: 1158px;
-    margin: 0 auto;
+    min-width: 1158px;
+   margin: 0 auto;
 }
 
 .link {

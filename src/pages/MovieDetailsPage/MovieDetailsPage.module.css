@@ -1,0 +1,14 @@
+.movieDetails {
+  display: flex; /* Використання flexbox для вирівнювання */
+  line-height: 36px;
+}
+
+.moviePoster {
+  width: 350px; /* Ширина зображення */
+  height: auto; /* Автоматичне збереження пропорцій */
+  margin: 10px; /* Відступ праворуч */
+}
+
+.movieInfo {
+  flex: 1; /* Текстовий блок займатиме залишок простору */
+}

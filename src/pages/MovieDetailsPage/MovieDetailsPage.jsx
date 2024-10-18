@@ -1,12 +1,19 @@
 import { Suspense, useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
-    const { movieId } = useParams(); // отримуємо movieId з URL
-    const location = useLocation();
-    console.log(location);
-    const goBackRef = useRef(location.state ?? "/");
-    const [movie, setMovie] = useState(null); //ініціалізуєсмо як null //Початковий стан для movie має бути об'єктом (а не масивом), оскільки отриму деталі одного фільму.
+  const { movieId } = useParams(); // отримуємо movieId з URL
+  const location = useLocation();
+  console.log(location);
+  const goBackRef = useRef(location.state?.from || "/");
+  const [movie, setMovie] = useState(null); //ініціалізуєсмо як null //Початковий стан для movie має бути об'єктом (а не масивом), оскільки отриму деталі одного фільму.
 
   const options = {
     method: "GET",
@@ -51,16 +58,37 @@ const MovieDetailsPage = () => {
     "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   return (
-    <div>
+    <>
       <Link to={goBackRef.current}>Go back</Link>
-      <img src={movie.poster_path ? posterUrl : defaultImg} />
-      <h2>{movie.title}</h2>
-      <p>User Score: {movie.vote_average}</p>
-      <p>Overview:{movie.overview}</p>
-      <p>Release Date: {movie.release_date}</p>
-      <p>Genres: {genreList}</p>
-      <p>Country: {movie.origin_country}</p>
-      <p>Runtime: {movie.runtime}</p>
+      <div className={s.movieDetails}>
+        <img
+          src={movie.poster_path ? posterUrl : defaultImg}
+          alt={movie.title}
+          className={s.moviePoster}
+        />
+        <div className={s.movieInfo}>
+          <h2>{movie.title}</h2>
+          <p>
+            <strong> User Score:</strong> {movie.vote_average}
+          </p>
+          <p>
+            <strong>Overview:</strong>
+            {movie.overview}
+          </p>
+          <p>
+            <strong>Release Date:</strong> {movie.release_date}
+          </p>
+          <p>
+            <strong>Genres:</strong> {genreList}
+          </p>
+          <p>
+            <strong>Country:</strong> {movie.origin_country}
+          </p>
+          <p>
+            <strong>Runtime:</strong> {movie.runtime}
+          </p>
+        </div>
+      </div>
       <hr />
       <div>
         <h3>Additional information</h3>
@@ -70,7 +98,7 @@ const MovieDetailsPage = () => {
       <Suspense fallback={<h2>Second suspense</h2>}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 };
 
