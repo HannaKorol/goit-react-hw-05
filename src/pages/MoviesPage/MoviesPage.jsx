@@ -17,7 +17,6 @@ const MoviesPage = () => {
     searchParams.get("query") ||
     ""; /* searchParams може мати get - отримує обект чи set-закидує обект до URL безпосередньо -  35.00 lection 2 */
 
-
   const options = {
     method: "GET",
     headers: {
@@ -78,7 +77,7 @@ const MoviesPage = () => {
         <p className={s.paragraph}>Loading...</p> // Текст лоадера
       ) : query ? ( // Якщо є запит
         filteredData.length > 0 ? ( // Якщо є фільми в filteredData
-          <MovieList movies={filteredData} location={location} />
+          <MovieList movies={filteredData} /* location={location} */ />
         ) : (
           // Якщо фільмів немає
           <p className={s.paragraph}>No movies available</p> // Повідомлення про відсутність фільмів
