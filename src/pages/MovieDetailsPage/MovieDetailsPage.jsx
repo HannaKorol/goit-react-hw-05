@@ -10,8 +10,8 @@ import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams(); // отримуємо movieId з URL
- /*  const location = useLocation();
-  console.log(location); */
+  const location = useLocation();
+  console.log(location);
   const goBackRef = useRef(location.state?.from || "/");
   const [movie, setMovie] = useState(null); //ініціалізуєсмо як null //Початковий стан для movie має бути об'єктом (а не масивом), оскільки отриму деталі одного фільму.
 
