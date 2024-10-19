@@ -1,18 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom"; // Import useSearchParams
+import { useLocation, useSearchParams } from "react-router-dom"; // Import useSearchParams
 import MovieList from "../../components/MovieList/MovieList";
 import MovieSearchBar from "../../components/MovieSearchBar/MovieSearchBar";
-import s from "./MoviesPage.module.css"
+import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams(); // Initialize searchParams
   const [movies, setMovies] = useState([]); // State for storing movie data
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  console.log(location);
+
 
   // Get the search query from URL parameters
   const query =
     searchParams.get("query") ||
     ""; /* searchParams може мати get - отримує обект чи set-закидує обект до URL безпосередньо -  35.00 lection 2 */
+
 
   const options = {
     method: "GET",
@@ -74,7 +78,7 @@ const MoviesPage = () => {
         <p className={s.paragraph}>Loading...</p> // Текст лоадера
       ) : query ? ( // Якщо є запит
         filteredData.length > 0 ? ( // Якщо є фільми в filteredData
-          <MovieList movies={filteredData} />
+          <MovieList movies={filteredData} location={location} />
         ) : (
           // Якщо фільмів немає
           <p className={s.paragraph}>No movies available</p> // Повідомлення про відсутність фільмів
